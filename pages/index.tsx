@@ -44,6 +44,8 @@ export default function Home({ socials }: Props) {
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const socials: Social[] = await fetchSocials();
 
+    console.log(socials);
+
     return {
         props: {
             socials,
