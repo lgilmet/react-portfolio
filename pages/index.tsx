@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
+import Contact from "../components/Contact";
 import { Social } from "../typings";
 import { fetchSocials } from "../utilities/fetchSocials";
 
@@ -21,30 +22,32 @@ export default function Home({ socials }: Props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className="fixed top-0 left-0 right-0 backdrop-blur-sm bg-white/30">
+            <div className="fixed top-0 left-0 right-0 backdrop-blur-sm bg-white/30 ">
                 <Header socials={socials} />
             </div>
-            {/* Header */}
 
-            {/* Hero */}
+            <main className="pt-40">
+                {/* Header */}
 
-            {/* About */}
+                {/* Hero */}
 
-            {/* Experience */}
+                {/* About */}
 
-            {/* Skills */}
+                {/* Experience */}
 
-            {/* Projects */}
+                {/* Skills */}
 
-            {/* Contacts */}
+                {/* Projects */}
+
+                {/* Contacts */}
+                <Contact />
+            </main>
         </div>
     );
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const socials: Social[] = await fetchSocials();
-
-    console.log(socials);
 
     return {
         props: {
