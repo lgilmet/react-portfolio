@@ -4,7 +4,8 @@ import Image from "next/image";
 import Header from "../components/Header";
 import Contact from "../components/Contact";
 import { Social } from "../typings";
-import { fetchSocials } from "../utilities/fetchSocials";
+import { sanityClient } from "../sanity";
+import { groq } from "next-sanity";
 
 type Props = {
     socials: Social[];
@@ -47,7 +48,9 @@ export default function Home({ socials }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const socials: Social[] = await fetchSocials();
+    const socials: Social[] = await sanityClient.fetch(groq`
+    *[_type=="social"]
+`);
 
     return {
         props: {
