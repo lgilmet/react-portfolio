@@ -8,8 +8,8 @@ type Props = {
 
 export default function Header({ socials }: Props) {
     return (
-        <header className="max-w-screen-lg lg:mx-auto my-2">
-            <div className="flex justify-between mx-2">
+        <header className="max-w-screen-lg mx-auto my-2">
+            <div className="flex justify-between mx-2 flex-col sm:flex-row">
                 <div>
                     <p>Lucas Guillemette</p>
                     <p>Web dev</p>
