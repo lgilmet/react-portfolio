@@ -1,8 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import { SocialIcon } from "react-social-icons";
-// import { Social } from "../typings";
+import { AiOutlinePhone } from "react-icons/ai";
+import Image from "next/image";
 
 export default function BusinssCard() {
   const socials = [
@@ -21,10 +20,12 @@ export default function BusinssCard() {
         <div className="flex flex-col ">
           <div className="flex flex-col items-center flex-1">
             <div className="flex flex-col ">
-              <img
+              <Image
                 className="h-32 w-32  rounded-full blur-sm group-hover:blur-none transition-all duration-200"
-                src="https://media.licdn.com/dms/image/C4E03AQEGeI0pyFfi5A/profile-displayphoto-shrink_400_400/0/1631146324116?e=1676505600&v=beta&t=BUaU9aLaedg4Y0HdMpu0B2Hgf0tR83LIEbkoqqyC0wc"
+                src="/img/lucas-selfie.jpg"
                 alt="Lucas Guillemette"
+                width={128}
+                height={128}
               />
             </div>
           </div>
@@ -34,9 +35,9 @@ export default function BusinssCard() {
           <div className="flex flex-col flex-1 ">
             <div className="">
               <p className="font-semibold">Web Developer | Photographer</p>
-              <p className="mb-4 text-sm">for bureau1024</p>
+              {/* <p className="mb-4 text-sm">for bureau1024</p> */}
             </div>
-            <p className="">
+            <p className="mt-2">
               <a
                 href="mailto:
               i.lucas.guillemette@gmail.com"
@@ -45,24 +46,28 @@ export default function BusinssCard() {
                 i.lucas.guillemette@gmail.com
               </a>
             </p>
-            <p className="">
-              <a href="tel:514-993-7415" target="_blank">
+            <p className="group flex gap-1 items-center ">
+              <a
+                href="tel:514-993-7415"
+                className="group-hover:underline underline-offset-2 hover:underline-offset-1"
+                target="_blank">
                 514-993-7415
               </a>
+              <AiOutlinePhone className="hidden group-hover:block" />
             </p>
           </div>
-          <div className="inline-block mt-4">
+          <div className="inline-block flex gap-2">
             {socials?.map((social) => (
               <SocialIcon
                 bgColor="#0000"
                 fgColor="#000"
-                className="mr-2 hover:bg-white/30 rounded-full"
                 style={{
                   height: 36,
                   width: 36,
                   marginLeft: "-8px",
                   marginBottom: "-4px",
                 }}
+                className="hover:bg-white/30 rounded-full hover:border hover:bg-white transition-all duration-200"
                 key={social.title}
                 label={social.title}
                 target="_blank"
