@@ -42,7 +42,8 @@ export default function BusinssCard() {
                 href="mailto:
               i.lucas.guillemette@gmail.com"
                 className="underline underline-offset-2 hover:underline-offset-1"
-                target="_blank">
+                target="_blank"
+                rel="noreferrer">
                 i.lucas.guillemette@gmail.com
               </a>
             </p>
@@ -50,7 +51,8 @@ export default function BusinssCard() {
               <a
                 href="tel:514-993-7415"
                 className="group-hover:underline underline-offset-2 hover:underline-offset-1"
-                target="_blank">
+                target="_blank"
+                rel="noreferrer">
                 514-993-7415
               </a>
               <AiOutlinePhone className="hidden group-hover:block" />
