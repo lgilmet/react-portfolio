@@ -9,27 +9,18 @@ export default function Layout({ children }) {
         <div className="p-8">
           <BusinessCard />
         </div>
-        <div className="container">
-          <ul className="flex gap-4 justify-between">
-            {/* <li>
+        {/* <div className="container">
+          <ul className="flex gap-4 justify-around">
+            <li>
               <a href="/">Gallery</a>
             </li>
             <li>
-              <Separator orientation="vertical" />
-            </li>
-            <li>
               <a href="/projects">Projects</a>
-            </li> */}
-            {/* <li>
-              <Separator orientation="vertical" />
             </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li> */}
           </ul>
-        </div>
+        </div> */}
       </nav>
-      {/* {children} */}
+      {children}
     </div>
   );
 }
