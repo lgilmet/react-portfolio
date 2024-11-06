@@ -1,11 +1,15 @@
 import BusinessCard from "@/components/BusinessCard";
+import { ThemeSwitch } from "@/components/ThemeSwitch";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
 
 export default function Layout({ children }) {
   return (
     <div className="">
-      <nav className="flex flex-col row-start-2 items-center pt-20">
+      <nav className="flex flex-col row-start-2 items-center pt-20 relative">
+        <div className="absolute top-2 right-2 z-0">
+          <ThemeSwitch />
+        </div>
         <div className="p-8">
           <BusinessCard />
         </div>

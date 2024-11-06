@@ -5,6 +5,7 @@ import { CiGrid41, CiGrid2H } from "react-icons/ci";
 import "react-photo-album/rows.css";
 import { Button } from "@/components/ui/button";
 import GalleryGrid from "@/components/GalleryGrid";
+import Link from "next/link";
 
 export default async function GalleryPage({ searchParams }) {
   const posts = await sanityFetch({
@@ -28,23 +29,23 @@ export default async function GalleryPage({ searchParams }) {
     length: post.photos?.length,
   }));
 
-  console.log("Posts: " + JSON.stringify(posts, null, 2));
+  // console.log("Posts: " + JSON.stringify(posts, null, 2));
 
   return (
     <div className="">
       <div className="flex gap-12 justify-center py-6">
         <Button asChild variant={layout === "grid" ? "secondary" : "ghost"}>
-          <a href="?layout=grid">
+          <Link href="?layout=grid">
             <CiGrid41 size={24} /> Grid
-          </a>
+          </Link>
         </Button>
         <Button asChild variant={layout === "list" ? "secondary" : "ghost"}>
-          <a href="?layout=list">
+          <Link href="?layout=list">
             <div>
               <CiGrid2H size={24} />
             </div>{" "}
             List
-          </a>
+          </Link>
         </Button>
       </div>
 
@@ -59,13 +60,13 @@ export default async function GalleryPage({ searchParams }) {
           <div className="flex flex-col">
             {posts.map((post) => (
               <div key={post._id} className="max-h-screen mx-auto">
-                <a href={`/post/${post._id}`}>
+                <Link href={`/post/${post._id}`}>
                   <img
                     src={post.photos?.[0].asset?.url}
                     className="max-h-[80vh] object-contain mx-auto"
                     alt={post.title}
                   />
-                </a>
+                </Link>
                 <div className="min-h-24">
                   <a href={post.link} target="_blank" rel="noopener noreferrer">
                     {post.link}

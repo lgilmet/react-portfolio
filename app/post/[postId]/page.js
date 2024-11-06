@@ -1,10 +1,10 @@
 import DateDisplay from "@/app/components/DateDisplay";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
-import { Button } from "@/components/ui/button";
 import { sanityFetch } from "@/lib/sanity/client";
-import { PiArrowLeftLight } from "react-icons/pi";
 import { SocialIcon } from "react-social-icons";
 import { GoChevronLeft, GoArrowLeft } from "react-icons/go";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 
 function ViewLink({ link }) {
   function cleanLink(link) {
@@ -21,9 +21,9 @@ function ViewLink({ link }) {
       <SocialIcon
         url={link}
         bgColor="#0000"
-        fgColor="#000"
-        // className="h-4 w-4 border"
-        style={{ height: 30, width: 30, left: -0 }}
+        className=""
+        fgColor="currentColor"
+        style={{ height: 32, width: 32, left: -0 }}
         as="span"
       />
     </a>
@@ -64,31 +64,27 @@ export default async function PostPage({ params }) {
       ? navigationData[currentIndex + 1]._id
       : null;
 
-  console.log("Post: ", post);
-  console.log("Prev: ", prevPostId);
-  console.log("Next: ", nextPostId);
-  console.log("currentIndex: ", currentIndex);
   return (
     <div>
       <nav className="flex p-2 items-center justify-between gap-8">
-        <a href="/" className="flex gap-4">
+        <Link href="/" className="flex gap-4">
           <GoArrowLeft size="24" />
           Lucas Guillemette
-        </a>
+        </Link>
         <div className="flex gap-4 items-center">
           {prevPostId ? (
-            <a href={`/post/${prevPostId}`}>
+            <Link href={`/post/${prevPostId}`}>
               <GoChevronLeft size="24" className="" />
-            </a>
+            </Link>
           ) : (
             <div>
               <GoChevronLeft size="24" className="opacity-40" />
             </div>
           )}
           {nextPostId ? (
-            <a href={`/post/${nextPostId}`}>
+            <Link href={`/post/${nextPostId}`}>
               <GoChevronLeft size="24" className="transform rotate-180" />
-            </a>
+            </Link>
           ) : (
             <div>
               <GoChevronLeft
@@ -100,31 +96,25 @@ export default async function PostPage({ params }) {
           <ThemeSwitch />
         </div>
       </nav>
-      {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
-
-      {/* <img key={firstPhoto?._id} src={firstPhoto.asset?.url} alt={post.title} /> */}
 
       <div className="flex flex-col items-center gap-8 pb-8">
         <div className="p-2 lg:pl-0 w-full lg:max-w-[80vh] mx-auto">
-          <div className="flex justify-between">
-            <h2>{post.title}</h2>
-          </div>
-          {post.link && <ViewLink link={post.link} />}
-          {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
+          <h2>{post.title}</h2>
           <p>{post.description}</p>
-          <div className="text-sm text-neutral-600 flex">
+          <div className="text-xs text-secondary-foreground">
             <DateDisplay dateString={post._createdAt} />
-            <ul className="flex pl-4 text-xs gap-2">
-              {post.tags?.map((tag) => {
-                if (!tag) return null;
-                return (
-                  <li key={tag} className="p-1 rounded bg-gray-100">
-                    {tag}
-                  </li>
-                );
-              })}
-            </ul>
           </div>
+          <ul className="flex text-[0.7rem] gap-2 mt-2 ">
+            {post.tags?.map((tag) => {
+              if (!tag) return null;
+              return (
+                <li key={tag}>
+                  <Badge variant="secondary">{tag}</Badge>
+                </li>
+              );
+            })}
+          </ul>
+          {post.link && <ViewLink link={post.link} />}
         </div>
         <div className="flex flex-col gap-6">
           {post.photos?.map((photo, index) => {

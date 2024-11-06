@@ -15,8 +15,8 @@ export default function BusinessCard() {
   ];
 
   return (
-    <div className=" flex items-center justify-center text-neutral-800">
-      <div className="flex group md:aspect-[1.76] bg-white/40 hover:bg-white/50 transition-all duration-200 mx-2 flex-col flex-wrap sm:flex-row gap-2 md:gap-6 md:min-w-none  p-4  rounded-lg drop-shadow-lg hover:drop-shadow-2xl">
+    <div className=" flex items-center justify-center ">
+      <div className="flex group md:aspect-[1.76] bg-secondary transition-all duration-200 mx-2 flex-col flex-wrap sm:flex-row gap-2 md:gap-6 md:min-w-none  p-4  rounded-lg drop-shadow-lg hover:drop-shadow-2xl">
         <div className="flex flex-col ">
           <div className="flex flex-col items-center flex-1">
             <div className="flex flex-col ">
@@ -64,7 +64,7 @@ export default function BusinessCard() {
             {socials?.map((social) => (
               <SocialIcon
                 bgColor="#0000"
-                fgColor="#000"
+                fgColor="currentColor"
                 style={{
                   height: 36,
                   width: 36,

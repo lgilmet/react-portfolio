@@ -17,5 +17,5 @@ export default function DateDisplay({ dateString }) {
     setFormattedDate(date.toLocaleString("en-US", options));
   }, [dateString]);
 
-  return <span>{formattedDate || ""}</span>;
+  return <span>{formattedDate || ""} </span>;
 }
