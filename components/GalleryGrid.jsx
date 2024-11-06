@@ -3,6 +3,28 @@ import { useRouter } from "next/navigation";
 import { RowsPhotoAlbum } from "react-photo-album";
 import { PiCardsLight } from "react-icons/pi";
 import "react-photo-album/rows.css";
+import Image from "next/image";
+
+function renderNextImage({ alt = "", title, sizes }, { photo, width, height }) {
+  return (
+    <div
+      style={{
+        width: "100%",
+        position: "relative",
+        aspectRatio: `${width} / ${height}`,
+      }}
+    >
+      <Image
+        fill
+        src={photo}
+        alt={alt}
+        title={title}
+        sizes={sizes}
+        placeholder={"blurDataURL" in photo ? "blur" : undefined}
+      />
+    </div>
+  );
+}
 
 export default function GalleryGrid({ images }) {
   const router = useRouter();
@@ -15,8 +37,10 @@ export default function GalleryGrid({ images }) {
         router.push(`/post/${photo.id}`);
       }}
       spacing={4}
+      targetRowHeight={200}
+      rowConstraints={{ singleRowMaxHeight: 350 }}
       render={{
-        image: (props) => <img {...props} className="group" />,
+        image: renderNextImage,
         extras: (_, { photo, index }) => (
           <span className="absolute bottom-1 right-1 group-hover:bg-gray-500">
             {photo.length > 1 && (
